@@ -95,7 +95,7 @@ export const AIEquityCalculator: React.FC<AIEquityCalculatorProps> = ({ currentD
                 <Button
                   onClick={() => handleCalculate()}
                   disabled={loading || !prompt.trim()}
-                  className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-8 h-12 font-bold transition-all shadow-lg shadow-slate-200 active:scale-95"
+                  className="bg-slate-900 hover:bg-slate-800 text-white rounded-lg px-6 h-10 text-xs font-bold transition-all shadow-md shadow-slate-200 active:scale-95"
                 >
                   {loading ? <><Loader2 size={16} className="mr-2 animate-spin" /> Analyzing...</> : <><Send size={16} className="mr-2" /> Ask Advisor</>}
                 </Button>

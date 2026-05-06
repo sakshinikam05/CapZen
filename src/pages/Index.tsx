@@ -126,18 +126,18 @@ const Index = () => {
               )}
               <Button 
                 onClick={handleExportToXLSX} 
-                className="bg-slate-900 hover:bg-slate-800 text-white"
+                className="bg-slate-900 hover:bg-slate-800 text-white h-9 px-4 text-xs font-bold rounded-lg"
                 disabled={shareholders.length === 0 && convertibleInstruments.length === 0 && stockGrants.length === 0}
               >
-                <FileSpreadsheet className="w-4 h-4 mr-2" />
+                <FileSpreadsheet className="w-3.5 h-3.5 mr-2" />
                 Export XLSX
               </Button>
               <Button
                 onClick={handleLogout}
                 variant="outline"
-                className="border-slate-200 text-slate-600 hover:bg-red-50 hover:text-red-600"
+                className="border-slate-200 text-slate-600 hover:bg-red-50 hover:text-red-600 h-9 px-4 text-xs font-bold rounded-lg"
               >
-                <LogOut className="w-4 h-4 mr-2" />
+                <LogOut className="w-3.5 h-3.5 mr-2" />
                 Logout
               </Button>
             </div>
