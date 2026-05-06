@@ -1,425 +1,321 @@
+<div align="center">
+
 # CapZen
 
-**The all-in-one equity management platform built for Indian startups.**
-
-CapZen helps founders, CFOs, and lawyers manage cap tables, model funding rounds, track ESOPs, and get AI-powered equity advice — all natively in INR (₹).
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Running the Application](#running-the-application)
-- [API Reference](#api-reference)
-- [Database Schema](#database-schema)
-- [Pages & Components](#pages--components)
-- [Contributing](#contributing)
-- [License](#license)
+> ### 📊 **Cap Table & Equity Management Platform for Indian Startups** 📊
+> ✨ **Real-time Cap Tables** &nbsp;|&nbsp; 🤖 **AI Equity Advisor** &nbsp;|&nbsp; 🇮🇳 **100% INR Native**
 
 ---
 
-## Overview
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-5.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQLite-better--sqlite3-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenAI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white" />
+</p>
 
-CapZen is a full-stack SaaS application that provides Indian startups with a complete suite of equity management tools. It is built on a React + Vite frontend and a Node.js + SQLite backend, with an optional OpenAI integration for the AI Equity Advisor feature.
+<p align="center">
+  <img src="https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-4.x-000000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/Currency-INR_₹-FF9933?style=for-the-badge" />
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=20&pause=1000&color=0F172A&center=true&vCenter=true&width=600&lines=Real-time+Cap+Table+Management;AI-Powered+Equity+Advisor;ESOP+%26+Stock+Grant+Tracking;Dilution+Modeling+%26+Waterfall+Analysis;Secure+Per-User+SQLite+Persistence" alt="Typing SVG" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Cap_Tables-Fully_Managed-0F172A?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/ESOP-Automated_Vesting-64748B?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Auth-PBKDF2_SHA512-0F172A?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Export-XLSX_Ready-64748B?style=for-the-badge" />
+</p>
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+| # | Section |
+|---|---------|
+| 1 | [✨ Overview](#-overview) |
+| 2 | [🎯 Features](#-features) |
+| 3 | [🧠 Tech Stack](#-tech-stack) |
+| 4 | [📂 Project Structure](#-project-structure) |
+| 5 | [🚀 Getting Started](#-getting-started) |
+| 6 | [🔧 Environment Variables](#-environment-variables) |
+| 7 | [▶️ Running the App](#-running-the-app) |
+| 8 | [🔌 API Reference](#-api-reference) |
+| 9 | [🗄️ Database Schema](#-database-schema) |
+| 10 | [🔐 Security](#-security) |
+| 11 | [❤️ Contributors](#-contributors) |
+
+---
+
+## ✨ Overview
+
+**CapZen** is a full-stack SaaS application that gives Indian startups a single source of truth for all things equity. Built on **React + Vite** (frontend) and **Node.js + Express + SQLite** (backend), with optional **OpenAI GPT-4** integration for the AI Equity Advisor.
 
 **Key design decisions:**
-- All monetary values are in **INR (₹)** — no USD.
-- All data is **persisted per user** in a SQLite database on the backend.
-- Data is **auto-saved** on every change after the initial session load, preventing data loss.
-- The platform is designed to be **self-hostable** with zero cloud dependencies.
+- All monetary values are in **INR (₹)** — no USD ever.
+- All data is **auto-saved per user** to a SQLite database on every change.
+- A race-condition-safe `isDataLoaded` flag ensures saved data is **never overwritten** by an empty session on login.
+- Fully **self-hostable** — no cloud dependencies required.
 
 ---
 
-## Features
+## 🎯 Features
+
+<div align="center">
 
 | Feature | Description |
 |---|---|
-| **Cap Table Management** | Real-time ownership tracking across all share classes |
-| **Shareholder Registry** | Manage founders, investors, employees, and advisors |
-| **Investment Rounds** | Log Seed, Series A/B/C, and Bridge rounds with full details |
-| **Dilution Modeling** | Simulate future rounds and see ownership impact |
-| **Convertible Instruments** | Track SAFEs and convertible notes with cap/discount logic |
-| **ESOP & Stock Grants** | Manage employee option pools with vesting schedules |
-| **Waterfall Analysis** | Model exit scenarios (acquisition, IPO, liquidation) |
-| **AI Equity Advisor** | Ask plain-English equity questions, powered by OpenAI GPT-4 |
-| **XLSX Export** | One-click export of board-ready cap table reports |
-| **Auth System** | Secure signup/login with password hashing (PBKDF2 + SHA-512) |
+| 📊 **Cap Table Management** | Real-time ownership percentages across all share classes |
+| 👥 **Shareholder Registry** | Founders, investors, employees, advisors — all in one place |
+| 💰 **Investment Rounds** | Log Seed, Series A/B/C, and Bridge rounds with full term details |
+| 📉 **Dilution Modeling** | Simulate future rounds and see ownership impact instantly |
+| 📄 **Convertible Instruments** | Track SAFEs and convertible notes with cap & discount logic |
+| 🎁 **ESOP & Stock Grants** | Manage employee option pools with vesting schedules |
+| 🌊 **Waterfall Analysis** | Model exit scenarios — acquisition, IPO, or liquidation |
+| 🤖 **AI Equity Advisor** | Plain-English equity Q&A powered by OpenAI GPT-4 |
+| 📥 **XLSX Export** | One-click export of board-ready cap table reports |
+| 🔑 **Secure Auth** | Signup/login with PBKDF2-SHA512 password hashing |
+
+</div>
 
 ---
 
-## Tech Stack
+## 🧠 Tech Stack
 
-### Frontend
+### 🎨 Frontend
 | Technology | Version | Purpose |
 |---|---|---|
-| React | 18.3 | UI framework |
-| TypeScript | 5.5 | Type safety |
-| Vite | 5.4 | Build tool & dev server |
-| Tailwind CSS | 3.4 | Styling |
-| Radix UI | Various | Accessible component primitives |
-| React Router DOM | 6.26 | Client-side routing |
-| React Hook Form | 7.53 | Form management |
-| Recharts | 2.12 | Data visualizations |
-| Lucide React | 0.462 | Icon library |
-| xlsx | 0.18 | Excel export |
-| Zod | 3.23 | Schema validation |
+| **React** | 18.3 | UI framework |
+| **TypeScript** | 5.5 | Type safety |
+| **Vite** | 5.4 | Build tool & dev server |
+| **Tailwind CSS** | 3.4 | Utility-first styling |
+| **Radix UI** | Various | Accessible component primitives |
+| **React Router DOM** | 6.26 | Client-side routing |
+| **Recharts** | 2.12 | Equity visualizations |
+| **xlsx** | 0.18 | Excel export |
 
-### Backend
-| Technology | Version | Purpose |
-|---|---|---|
-| Node.js | ≥18 | Runtime |
-| Express | 4.x | HTTP server |
-| better-sqlite3 | Latest | SQLite database driver |
-| OpenAI SDK | Latest | AI Equity Advisor |
-| crypto (built-in) | — | Password hashing |
-| dotenv | 17.x | Environment variable management |
+### ⚙️ Backend
+| Technology | Purpose |
+|---|---|
+| **Node.js + Express** | REST API server |
+| **better-sqlite3** | Lightweight, fast SQLite driver |
+| **OpenAI SDK** | AI Equity Advisor integration |
+| **crypto** (built-in) | PBKDF2-SHA512 password hashing |
+| **dotenv** | Environment variable management |
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
-captable-generator-main/
+CapZen/
 ├── server/
-│   └── index.js              # Express API server (auth, data, AI)
+│   └── index.js                   ← Express API (auth, data save/load, AI)
 ├── src/
 │   ├── components/
-│   │   ├── AIEquityCalculator.tsx     # AI Advisor tab UI
-│   │   ├── CapTableDisplay.tsx        # Ownership table + chart
-│   │   ├── CompanyInfo.tsx            # Company setup form
-│   │   ├── ConvertibleInstruments.tsx # SAFEs & convertible notes
-│   │   ├── Footer.tsx                 # Shared footer
-│   │   ├── InvestmentRounds.tsx       # Funding rounds management
-│   │   ├── Logo.tsx                   # CSS-based CapZen wordmark
-│   │   ├── ShareholderManagement.tsx  # Shareholder CRUD
-│   │   ├── StockGrants.tsx            # ESOP & RSU management
-│   │   ├── WaterfallAnalysis.tsx      # Exit scenario modeler
-│   │   └── ui/                        # Shadcn/Radix UI components
+│   │   ├── AIEquityCalculator.tsx  ← AI Advisor UI
+│   │   ├── CapTableDisplay.tsx     ← Ownership table + chart
+│   │   ├── CompanyInfo.tsx         ← Company setup form
+│   │   ├── ConvertibleInstruments.tsx
+│   │   ├── InvestmentRounds.tsx
+│   │   ├── ShareholderManagement.tsx
+│   │   ├── StockGrants.tsx
+│   │   ├── WaterfallAnalysis.tsx
+│   │   └── Logo.tsx / Footer.tsx
 │   ├── contexts/
-│   │   └── AuthContext.tsx            # Auth state + API helpers
+│   │   └── AuthContext.tsx         ← Auth state + API helpers
 │   ├── pages/
-│   │   ├── Landing.tsx                # Marketing landing page
-│   │   ├── Login.tsx                  # Login page
-│   │   ├── Signup.tsx                 # Signup page
-│   │   └── Index.tsx                  # Main dashboard (authenticated)
-│   ├── types/
-│   │   └── index.ts                   # TypeScript interfaces
-│   ├── utils/
-│   │   └── enhancedExportUtils.ts     # XLSX export logic
-│   └── App.tsx                        # Route definitions
-├── .env                               # Environment variables (not committed)
+│   │   ├── Landing.tsx             ← Marketing landing page
+│   │   ├── Login.tsx / Signup.tsx
+│   │   └── Index.tsx               ← Main dashboard
+│   ├── types/index.ts              ← TypeScript interfaces
+│   └── utils/enhancedExportUtils.ts← XLSX export logic
+├── .env                            ← API keys (not committed)
 ├── package.json
-├── tailwind.config.ts
 └── vite.config.ts
 ```
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-
-- **Node.js** v18 or higher
-- **npm** v9 or higher
-- An **OpenAI API key** (optional — only required for AI Advisor feature)
+- **Node.js** v18+
+- **npm** v9+
+- **OpenAI API key** *(optional — only for AI Advisor)*
 
 ### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/sakshinikam05/CapZen.git
-   cd CapZen
-   ```
+```bash
+# 1. Clone the repo
+git clone https://github.com/sakshinikam05/CapZen.git
+cd CapZen
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+# 2. Install dependencies
+npm install
 
-3. **Set up environment variables:**
-   ```bash
-   cp .env.example .env
-   # Then edit .env with your values (see below)
-   ```
+# 3. Set up environment
+cp .env.example .env
+# Edit .env with your OpenAI key
+```
 
 ---
 
-## Environment Variables
-
-Create a `.env` file in the project root with the following:
+## 🔧 Environment Variables
 
 ```env
-# Required for the backend server
+# .env — place in project root
 OPENAI_API_KEY=sk-your-openai-api-key-here
 ```
 
-> **Note:** The `OPENAI_API_KEY` is only required if you want to use the **AI Equity Advisor** feature. All other features work without it.
+> The AI Equity Advisor is the **only** feature requiring an API key. All other features work without it.
 
 ---
 
-## Running the Application
+## ▶️ Running the App
 
-CapZen requires **two processes** to be running simultaneously: the frontend dev server and the backend API server.
-
-### 1. Start the Backend API Server
+CapZen runs two processes in parallel:
 
 ```bash
+# Terminal 1 — Backend API (port 3001)
 node server/index.js
-```
 
-The server will start on **http://localhost:3001**. On first run, it will automatically create the SQLite database at `server/capzen.db`.
-
-You should see:
-```
-🚀 CapZen API Server running at http://localhost:3001
-📦 Database: /path/to/server/capzen.db
-✅ SQLite database initialized
-```
-
-### 2. Start the Frontend Dev Server
-
-In a **new terminal tab**:
-
-```bash
+# Terminal 2 — Frontend dev server (port 8080)
 npm run dev
 ```
 
-The frontend will start on **http://localhost:8080**.
-
-### Quick Start (Both together on macOS/Linux)
-
+**Or run both together (macOS/Linux):**
 ```bash
 node server/index.js & npm run dev
 ```
 
-### Production Build
+On first run, the SQLite database is automatically created at `server/capzen.db`.
 
+**Production build:**
 ```bash
-npm run build
-```
-
-The built files will be in the `dist/` folder, ready for deployment to any static host (Vercel, Netlify, etc.). The backend can be deployed separately to Render, Railway, or any Node.js host.
-
----
-
-## API Reference
-
-All API endpoints are served from `http://localhost:3001`.
-
-### Authentication
-
-#### `POST /api/signup`
-Create a new user account.
-
-**Request Body:**
-```json
-{
-  "name": "Sakshi Nikam",
-  "email": "sakshi@example.com",
-  "password": "securepassword123"
-}
-```
-
-**Response:**
-```json
-{
-  "user": { "id": "uuid", "name": "Sakshi Nikam", "email": "sakshi@example.com" }
-}
+npm run build   # Output in dist/
 ```
 
 ---
 
-#### `POST /api/login`
-Authenticate an existing user.
+## 🔌 API Reference
 
-**Request Body:**
-```json
-{
-  "email": "sakshi@example.com",
-  "password": "securepassword123"
-}
-```
+> Base URL: `http://localhost:3001`
 
-**Response:**
-```json
-{
-  "user": { "id": "uuid", "name": "Sakshi Nikam", "email": "sakshi@example.com" }
-}
-```
-
----
+### Auth
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/signup` | Create account |
+| `POST` | `/api/login` | Authenticate user |
 
 ### Cap Table Data
-
-#### `POST /api/data/save`
-Save or update a specific section of a user's cap table data.
-
-**Request Body:**
-```json
-{
-  "userId": "user-uuid",
-  "dataType": "shareholders",
-  "data": [ ... ]
-}
-```
-
-`dataType` can be: `company`, `shareholders`, `investmentRounds`, `convertibleInstruments`, `stockGrants`, `waterfallScenarios`
-
----
-
-#### `GET /api/data/load/:userId`
-Load all cap table data for a user.
-
-**Response:**
-```json
-{
-  "company": { ... },
-  "shareholders": [ ... ],
-  "investmentRounds": [ ... ],
-  "convertibleInstruments": [ ... ],
-  "stockGrants": [ ... ],
-  "waterfallScenarios": [ ... ]
-}
-```
-
----
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/data/save` | Save a data section (`company`, `shareholders`, etc.) |
+| `GET` | `/api/data/load/:userId` | Load all data for a user |
 
 ### AI Advisor
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/ai/calculate` | Submit equity question to GPT-4 |
 
-#### `POST /api/ai/calculate`
-Send an equity question to the AI Advisor.
-
-**Request Body:**
-```json
-{
-  "prompt": "If I raise ₹2 Cr at a ₹10 Cr pre-money valuation, what is my dilution?",
-  "currentCapTable": { ... }
-}
-```
-
-**Response:**
-```json
-{
-  "result": "At a ₹10 Cr pre-money valuation with a ₹2 Cr raise..."
-}
-```
+### Health
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/health` | Server + DB status check |
 
 ---
 
-### Health Check
+## 🗄️ Database Schema
 
-#### `GET /api/health`
+> SQLite with WAL mode · Auto-created on first run
 
-```json
-{
-  "status": "ok",
-  "users": 12
-}
-```
-
----
-
-## Database Schema
-
-CapZen uses **SQLite** (via `better-sqlite3`) with WAL mode enabled for performance.
-
-### `users` table
-| Column | Type | Description |
+### `users`
+| Column | Type | Notes |
 |---|---|---|
 | `id` | TEXT (PK) | UUID |
-| `name` | TEXT | User's full name |
-| `email` | TEXT (UNIQUE) | User's email address |
-| `password_hash` | TEXT | PBKDF2-SHA512 hash with salt |
-| `created_at` | DATETIME | Timestamp of registration |
+| `name` | TEXT | Full name |
+| `email` | TEXT UNIQUE | Login email |
+| `password_hash` | TEXT | PBKDF2-SHA512 + random salt |
+| `created_at` | DATETIME | Auto timestamp |
 
-### `cap_table_data` table
-| Column | Type | Description |
+### `cap_table_data`
+| Column | Type | Notes |
 |---|---|---|
-| `id` | TEXT (PK) | Composite: `{userId}_{dataType}` |
+| `id` | TEXT (PK) | `{userId}_{dataType}` |
 | `user_id` | TEXT (FK) | References `users.id` |
-| `data_type` | TEXT | e.g. `company`, `shareholders` |
+| `data_type` | TEXT | `company`, `shareholders`, etc. |
 | `data_json` | TEXT | JSON-serialized data |
 | `updated_at` | DATETIME | Last save timestamp |
 
-> Data is saved using an **UPSERT** (`INSERT ... ON CONFLICT DO UPDATE`) strategy, ensuring only the latest version of each data type is stored per user.
+> Uses **UPSERT** — each save replaces the previous version of that data type.
 
 ---
 
-## Pages & Components
+## 🔐 Security
 
-### Pages
-
-| Route | Component | Description |
-|---|---|---|
-| `/` | `Landing.tsx` | Public marketing landing page |
-| `/login` | `Login.tsx` | User authentication |
-| `/signup` | `Signup.tsx` | New user registration |
-| `/dashboard` | `Index.tsx` | Main authenticated dashboard |
-
-### Core Dashboard Components
-
-| Component | Tab | Description |
-|---|---|---|
-| `CompanyInfo.tsx` | Company | Company name, jurisdiction, authorized shares |
-| `ShareholderManagement.tsx` | Shareholders | Add/edit/delete shareholders |
-| `InvestmentRounds.tsx` | Rounds | Log funding rounds with full term details |
-| `AIEquityCalculator.tsx` | AI Advisor | Natural language equity Q&A via OpenAI |
-| `ConvertibleInstruments.tsx` | Convertibles | Track SAFEs and convertible notes |
-| `StockGrants.tsx` | Grants | ESOP pool and stock grant management |
-| `WaterfallAnalysis.tsx` | Scenarios | Exit waterfall modeling |
-| `CapTableDisplay.tsx` | Cap Table | Ownership summary table and chart |
-
----
-
-## Data Persistence
-
-CapZen implements a **safe auto-save** mechanism to ensure no data is ever lost:
-
-1. On login, the dashboard **loads all data** from the SQLite backend.
-2. A `isDataLoaded` flag is set to `true` only **after** successful fetch.
-3. All `useEffect` auto-save hooks are **gated** behind `isDataLoaded`, preventing the initial empty state from overwriting saved data.
-4. Any subsequent change to any data section triggers an **immediate save** to the backend.
-
----
-
-## Security
-
-- Passwords are hashed using **PBKDF2 with SHA-512** and a random 16-byte salt.
-- User sessions are stored in `localStorage` (client-side) after authentication.
-- All API requests are CORS-scoped to `localhost:8080` in development.
-- The SQLite database file (`server/capzen.db`) is local and never exposed publicly.
-
----
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m "feat: add my feature"`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Open a Pull Request
-
----
-
-## Developers
-
-| Name | GitHub |
+| Concern | Implementation |
 |---|---|
-| Sakshi Nikam | [@sakshinikam05](https://github.com/sakshinikam05) |
+| 🔑 Passwords | PBKDF2 + SHA-512 + 16-byte random salt |
+| 🔒 Sessions | Stored in `localStorage` post-auth |
+| 🌐 CORS | Scoped to `localhost:8080` in dev |
+| 💾 Database | Local SQLite file, never publicly exposed |
+| 📁 Data isolation | All queries scoped strictly by `userId` |
 
 ---
 
-## License
+## ❤️ Contributors
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+<br />
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/sakshinikam05">
+        <img src="https://github.com/sakshinikam05.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Sakshi Nikam"/>
+        <br /><sub><b>Sakshi Nikam</b></sub>
+      </a>
+      <br /><sub>Full Stack · UI/UX</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/contributor2">
+        <img src="https://github.com/contributor2.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Contributor 2"/>
+        <br /><sub><b>Contributor 2</b></sub>
+      </a>
+      <br /><sub>Backend · API</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/contributor3">
+        <img src="https://github.com/contributor3.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Contributor 3"/>
+        <br /><sub><b>Contributor 3</b></sub>
+      </a>
+      <br /><sub>Frontend · Design</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/contributor4">
+        <img src="https://github.com/contributor4.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Contributor 4"/>
+        <br /><sub><b>Contributor 4</b></sub>
+      </a>
+      <br /><sub>AI · Data Layer</sub>
+    </td>
+  </tr>
+</table>
+
+<br />
 
 ---
 
-<p align="center">Made with ♥ for India's startup ecosystem</p>
+<div align="center">
+
+> #### Built with 💻 & ☕ for India's startup ecosystem
+>
+> © CapZen 2025 · MIT License · Academic & Portfolio Project
+
+</div>
