@@ -152,87 +152,120 @@ const Index = () => {
           )}
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="border-slate-200 shadow-sm">
-            <CardContent className="flex items-center p-6">
-              <div className="bg-slate-100 p-3 rounded-xl mr-4">
-                <Building className="h-6 w-6 text-slate-600" />
+        {/* Quick Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+          {/* Company */}
+          <Card className="border-slate-100 shadow-sm rounded-xl hover:shadow-md transition-all">
+            <CardContent className="flex items-center p-4">
+              <div className="p-2.5 rounded-lg mr-3 bg-blue-50">
+                <Building className="h-5 w-5 text-blue-600" />
               </div>
-              <div>
-                <p className="text-xs font-bold text-slate-400 uppercase">Company</p>
-                <p className="text-lg font-black text-slate-900 truncate">
-                  {company.name || 'Set Name'}
+              <div className="min-w-0">
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Company</p>
+                <p className="text-sm font-black text-slate-900 truncate tracking-tight uppercase">
+                  {company.name || 'Not Set'}
                 </p>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="border-slate-200 shadow-sm">
-            <CardContent className="flex items-center p-6">
-              <div className="bg-slate-100 p-3 rounded-xl mr-4">
-                <Users className="h-6 w-6 text-slate-600" />
+          {/* Shareholders */}
+          <Card className="border-slate-100 shadow-sm rounded-xl hover:shadow-md transition-all">
+            <CardContent className="flex items-center p-4">
+              <div className="p-2.5 rounded-lg mr-3 bg-green-50">
+                <Users className="h-5 w-5 text-green-600" />
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase">Shareholders</p>
-                <p className="text-lg font-black text-slate-900">{shareholders.length}</p>
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Shareholders</p>
+                <p className="text-xl font-black text-slate-900 leading-none">{shareholders.length}</p>
               </div>
             </CardContent>
           </Card>
-          
-          <Card className="border-slate-200 shadow-sm">
-            <CardContent className="flex items-center p-6">
-              <div className="bg-slate-100 p-3 rounded-xl mr-4">
-                <IndianRupee className="h-6 w-6 text-slate-600" />
+
+          {/* Total Shares */}
+          <Card className="border-slate-100 shadow-sm rounded-xl hover:shadow-md transition-all">
+            <CardContent className="flex items-center p-4">
+              <div className="p-2.5 rounded-lg mr-3 bg-purple-50">
+                <TrendingUp className="h-5 w-5 text-purple-600" />
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase">Current Valuation</p>
-                <p className="text-lg font-black text-slate-900">
-                  {currentValuation ? `₹${currentValuation.toLocaleString('en-IN')}` : '₹0'}
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Total Shares</p>
+                <p className="text-xl font-black text-slate-900 leading-none">
+                  {shareholders.reduce((sum, s) => sum + s.shares, 0).toLocaleString('en-IN')}
                 </p>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="border-slate-200 shadow-sm">
-            <CardContent className="flex items-center p-6">
-              <div className="bg-slate-900 p-3 rounded-xl mr-4">
-                <Sparkles className="h-6 w-6 text-yellow-400" />
+          {/* Valuation */}
+          <Card className="border-slate-100 shadow-sm rounded-xl hover:shadow-md transition-all">
+            <CardContent className="flex items-center p-4">
+              <div className="p-2.5 rounded-lg mr-3 bg-orange-50">
+                <IndianRupee className="h-5 w-5 text-orange-600" />
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase">AI Advisor</p>
-                <p className="text-lg font-black text-slate-900">Online</p>
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Valuation</p>
+                <p className="text-xl font-black text-slate-900 leading-none">
+                  {currentValuation ? `₹${currentValuation.toLocaleString('en-IN')}` : 'N/A'}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Convertibles */}
+          <Card className="border-slate-100 shadow-sm rounded-xl hover:shadow-md transition-all">
+            <CardContent className="flex items-center p-4">
+              <div className="p-2.5 rounded-lg mr-3 bg-red-50">
+                <FileSpreadsheet className="h-5 w-5 text-red-600" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Convertibles</p>
+                <p className="text-xl font-black text-slate-900 leading-none">{convertibleInstruments.length}</p>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Stock Grants */}
+          <Card className="border-slate-100 shadow-sm rounded-xl hover:shadow-md transition-all">
+            <CardContent className="flex items-center p-4">
+              <div className="p-2.5 rounded-lg mr-3 bg-indigo-50">
+                <Shield className="h-5 w-5 text-indigo-600" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Stock Grants</p>
+                <p className="text-xl font-black text-slate-900 leading-none">{stockGrants.length}</p>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Main Content */}
+        {/* Main Navigation Tabs */}
         <Tabs defaultValue="company" className="w-full">
-          <div className="overflow-x-auto pb-2">
-            <TabsList className="flex w-max min-w-full bg-white border border-slate-200 p-1 rounded-xl mb-6">
-              <TabsTrigger value="company" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
+          <div className="overflow-x-auto -mx-1 px-1">
+            <TabsList className="flex w-max min-w-full bg-slate-50/80 border-none p-0 rounded-none mb-8 h-auto gap-1">
+              <TabsTrigger value="company" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none relative transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
                 Company
+                {!isCompanyComplete && <span className="absolute top-3 right-5 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />}
               </TabsTrigger>
-              <TabsTrigger value="shareholders" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
-                Shareholders
+              <TabsTrigger value="shareholders" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
+                Shareholders ({shareholders.length})
               </TabsTrigger>
-              <TabsTrigger value="investments" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
-                Rounds
+              <TabsTrigger value="investments" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
+                Rounds ({investmentRounds.length})
               </TabsTrigger>
-              <TabsTrigger value="ai-advisor" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white gap-2">
+              <TabsTrigger value="ai-advisor" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900 flex items-center gap-2">
                 <Sparkles size={14} className="text-yellow-500" /> AI Advisor
               </TabsTrigger>
-              <TabsTrigger value="convertibles" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
-                Convertibles
+              <TabsTrigger value="convertibles" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
+                Convertibles ({convertibleInstruments.length})
               </TabsTrigger>
-              <TabsTrigger value="grants" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
-                Grants
+              <TabsTrigger value="grants" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
+                Grants ({stockGrants.length})
               </TabsTrigger>
-              <TabsTrigger value="waterfall" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
+              <TabsTrigger value="waterfall" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
                 Scenarios
               </TabsTrigger>
-              <TabsTrigger value="captable" className="rounded-lg data-[state=active]:bg-slate-900 data-[state=active]:text-white">
+              <TabsTrigger value="captable" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
                 Cap Table
               </TabsTrigger>
             </TabsList>
