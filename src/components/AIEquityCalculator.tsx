@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Sparkles, Send, Loader2 } from 'lucide-react';
+import { Sparkles, Send, Loader2, Info } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
 
 interface AIEquityCalculatorProps {
   currentData: any;
@@ -46,116 +48,110 @@ export const AIEquityCalculator: React.FC<AIEquityCalculatorProps> = ({ currentD
   };
 
   return (
-    <div style={{ maxWidth: 720 }}>
-      {/* Header */}
-      <div style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Sparkles size={18} color="#f59e0b" /> AI Equity Advisor
-        </h2>
-        <p style={{ fontSize: '0.875rem', color: '#64748b' }}>
-          Ask any question about your cap table — dilution, ownership, rounds — in plain English.
-        </p>
+    <div className="w-full space-y-6">
+      {/* Header / Intro */}
+      <div className="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl shadow-slate-200">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="max-w-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-300 mb-4 backdrop-blur-sm border border-white/10">
+              Powered by AI
+            </div>
+            <h2 className="text-3xl font-black tracking-tight mb-3">AI Equity Advisor</h2>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Ask complex equity questions in plain English. Our advisor analyzes your current cap table to provide accurate dilution, ownership, and exit simulations.
+            </p>
+          </div>
+          <div className="hidden md:flex bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-sm items-start gap-3 max-w-xs">
+            <Info size={16} className="text-slate-400 shrink-0 mt-0.5" />
+            <p className="text-[11px] text-slate-400 leading-normal italic">
+              "Dilution is the process where existing shareholders see their ownership percentage decrease as new shares are issued."
+            </p>
+          </div>
+        </div>
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-32 -mb-32" />
       </div>
 
-      {/* Example prompts */}
-      <div style={{ marginBottom: '1.25rem' }}>
-        <p style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.625rem' }}>
-          Try asking
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Input Card */}
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="border-slate-100 shadow-sm rounded-2xl overflow-hidden">
+            <CardContent className="p-6">
+              <p className="text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-4">Your Question</p>
+              <div className="relative">
+                <textarea
+                  placeholder="e.g. What happens if I raise ₹1 Cr from an angel?"
+                  value={prompt}
+                  onChange={e => setPrompt(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleCalculate(); }}
+                  className="w-full h-32 p-4 text-slate-900 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all resize-none font-medium"
+                />
+                <div className="absolute bottom-3 right-3 text-[10px] text-slate-400">
+                  CMD + Enter to ask
+                </div>
+              </div>
+              <div className="mt-4 flex justify-end">
+                <Button
+                  onClick={() => handleCalculate()}
+                  disabled={loading || !prompt.trim()}
+                  className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-8 h-12 font-bold transition-all shadow-lg shadow-slate-200 active:scale-95"
+                >
+                  {loading ? <><Loader2 size={16} className="mr-2 animate-spin" /> Analyzing...</> : <><Send size={16} className="mr-2" /> Ask Advisor</>}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Response area */}
+          {response && (
+            <Card className="border-none shadow-xl shadow-slate-100 rounded-2xl overflow-hidden bg-white">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-slate-100 rounded-lg">
+                    <Info size={18} className="text-slate-900" />
+                  </div>
+                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Advisor Insight</p>
+                </div>
+                <div className="text-slate-800 leading-relaxed space-y-4 text-[15px]">
+                  {response.split('\n').map((line, i) => (
+                    <p key={i} className={line.startsWith('-') || line.startsWith('*') ? 'pl-4 border-l-2 border-slate-100' : ''}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+
+        {/* Examples Sidebar */}
+        <div className="space-y-4">
+          <p className="text-xs font-extrabold text-slate-400 uppercase tracking-widest px-1">Common Queries</p>
           {EXAMPLE_PROMPTS.map(p => (
             <button
               key={p}
               onClick={() => handleCalculate(p)}
-              style={{
-                textAlign: 'left',
-                background: '#f8fafc',
-                border: '1.5px solid #f1f5f9',
-                borderRadius: 8,
-                padding: '0.625rem 0.875rem',
-                fontSize: '0.875rem',
-                color: '#334155',
-                cursor: 'pointer',
-                transition: 'border-color 0.15s, background 0.15s',
-                fontFamily: 'inherit',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e2e8f0'; (e.currentTarget as HTMLButtonElement).style.background = '#fff'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#f1f5f9'; (e.currentTarget as HTMLButtonElement).style.background = '#f8fafc'; }}
+              className="w-full text-left p-4 bg-white border border-slate-100 rounded-2xl hover:border-slate-900 hover:shadow-md transition-all group"
             >
-              {p}
+              <div className="flex items-start gap-3">
+                <div className="mt-1 p-1 rounded bg-slate-50 text-slate-400 group-hover:text-slate-900 transition-colors">
+                  <Send size={10} />
+                </div>
+                <span className="text-xs font-bold text-slate-600 leading-relaxed group-hover:text-slate-900">
+                  {p}
+                </span>
+              </div>
             </button>
           ))}
-        </div>
-      </div>
-
-      {/* Input area */}
-      <div style={{ marginBottom: '0.75rem' }}>
-        <textarea
-          placeholder="Or type your own question here…"
-          value={prompt}
-          onChange={e => setPrompt(e.target.value)}
-          onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleCalculate(); }}
-          rows={3}
-          style={{
-            width: '100%',
-            padding: '0.75rem',
-            fontSize: '0.9rem',
-            color: '#0f172a',
-            background: '#fff',
-            border: '1.5px solid #e2e8f0',
-            borderRadius: 10,
-            outline: 'none',
-            resize: 'vertical',
-            fontFamily: 'inherit',
-            lineHeight: 1.55,
-            transition: 'border-color 0.15s',
-            boxSizing: 'border-box',
-          }}
-          onFocus={e => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = '#0f172a'; }}
-          onBlur={e => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = '#e2e8f0'; }}
-        />
-      </div>
-
-      <button
-        onClick={() => handleCalculate()}
-        disabled={loading || !prompt.trim()}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 8,
-          height: 44,
-          padding: '0 1.5rem',
-          background: loading || !prompt.trim() ? '#e2e8f0' : '#0f172a',
-          color: loading || !prompt.trim() ? '#94a3b8' : '#fff',
-          fontWeight: 700,
-          fontSize: '0.9rem',
-          border: 'none',
-          borderRadius: 9,
-          cursor: loading || !prompt.trim() ? 'not-allowed' : 'pointer',
-          fontFamily: 'inherit',
-          transition: 'background 0.15s',
-        }}
-      >
-        {loading ? <><Loader2 size={15} className="spin" /> Thinking…</> : <><Send size={14} /> Ask AI</>}
-      </button>
-
-      {/* Response */}
-      {response && (
-        <div style={{
-          marginTop: '1.5rem',
-          padding: '1.25rem',
-          background: '#f8fafc',
-          border: '1.5px solid #f1f5f9',
-          borderRadius: 12,
-        }}>
-          <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: 6 }}>
-            <Sparkles size={12} color="#f59e0b" /> AI Response
-          </p>
-          <div style={{ fontSize: '0.9rem', color: '#1e293b', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>
-            {response}
+          <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+            <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-2">Pro Tip</h4>
+            <p className="text-[11px] text-slate-800 leading-relaxed opacity-70">
+              Include specific numbers for more accurate simulations. The AI considers your current shareholders, authorized shares, and liquidation preferences.
+            </p>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Building, Users, TrendingUp, Download, FileSpreadsheet, LogOut, Sparkles, IndianRupee } from "lucide-react";
+import { Building, Users, TrendingUp, Download, FileSpreadsheet, LogOut, Sparkles, IndianRupee, Shield } from "lucide-react";
 import { CompanyInfo } from "@/components/CompanyInfo";
 import { ShareholderManagement } from "@/components/ShareholderManagement";
 import { InvestmentRounds } from "@/components/InvestmentRounds";
@@ -107,8 +107,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#f8fafc', fontFamily: "'Inter', sans-serif" }}>
-      <div className="container mx-auto px-4 py-8" style={{ maxWidth: 1140 }}>
+    <div className="min-h-screen flex flex-col" style={{ background: '#f8fafc', fontFamily: "'Inter', sans-serif" }}>
+      <div className="container mx-auto px-4 py-8 flex-grow" style={{ maxWidth: 1400 }}>
         {/* Header */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
@@ -144,9 +144,10 @@ const Index = () => {
           </div>
           
           {!isCompanyComplete && (
-            <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl mb-6">
-              <p className="text-amber-800 text-sm flex items-center gap-2">
-                <span className="text-lg">⚠️</span> Complete your company information to unlock full features.
+            <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl mb-6 flex items-center gap-3">
+              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+              <p className="text-amber-800 text-sm font-medium">
+                Complete your company information to unlock full features.
               </p>
             </div>
           )}
@@ -254,7 +255,7 @@ const Index = () => {
                 Rounds ({investmentRounds.length})
               </TabsTrigger>
               <TabsTrigger value="ai-advisor" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900 flex items-center gap-2">
-                <Sparkles size={14} className="text-yellow-500" /> AI Advisor
+                AI Advisor
               </TabsTrigger>
               <TabsTrigger value="convertibles" className="px-8 py-4 rounded-none text-xs font-bold text-slate-500 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-none transition-all border-b-2 border-transparent data-[state=active]:border-slate-900">
                 Convertibles ({convertibleInstruments.length})
