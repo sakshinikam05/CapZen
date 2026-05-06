@@ -4,6 +4,7 @@ import {
   BarChart2, Shield, Users, Sparkles, FileSpreadsheet,
   TrendingUp, ArrowRight, Check
 } from 'lucide-react';
+import { Logo } from '@/components/Logo';
 
 const Landing = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,7 +15,7 @@ const Landing = () => {
       {/* ── NAV ── */}
       <header className="lp-nav">
         <div className="lp-nav-inner">
-          <Link to="/" className="lp-logo">CapZen</Link>
+          <Logo />
           <nav className="lp-nav-links">
             <a href="#features" className="lp-nav-link">Features</a>
             <a href="#how-it-works" className="lp-nav-link">How it works</a>
@@ -225,7 +226,7 @@ const Landing = () => {
 
       {/* ── CTA ── */}
       <section className="lp-cta">
-        <span className="lp-cta-logo">CapZen</span>
+        <Logo className="justify-center mb-6" size="lg" />
         <h2 className="lp-cta-title">Start managing your cap table today</h2>
         <p className="lp-cta-sub">Free to start. No credit card required.</p>
         <Link to="/signup" className="lp-cta-btn">
@@ -236,7 +237,7 @@ const Landing = () => {
       {/* ── FOOTER ── */}
       <footer className="lp-footer">
         <div className="lp-footer-inner">
-          <Link to="/" className="lp-footer-logo">CapZen</Link>
+          <Logo size="sm" />
           <p className="lp-footer-copy">© {new Date().getFullYear()} CapZen. Built for Indian founders.</p>
         </div>
       </footer>

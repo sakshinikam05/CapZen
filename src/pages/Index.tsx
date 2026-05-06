@@ -16,6 +16,7 @@ import { exportEnhancedXLSX } from "@/utils/enhancedExportUtils";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import { Logo } from "@/components/Logo";
 import { Company, Shareholder, InvestmentRound, ConvertibleInstrument, StockGrant, WaterfallScenario } from "@/types";
 
 const Index = () => {
@@ -112,7 +113,7 @@ const Index = () => {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div className="flex items-center gap-3">
-              <Link to="/" style={{ fontSize: '1.375rem', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.04em', textDecoration: 'none' }}>CapZen</Link>
+              <Logo />
               <div style={{ width: 1, height: 24, background: '#e2e8f0', margin: '0 4px' }} />
               <span style={{ fontSize: '0.8125rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Dashboard</span>
             </div>

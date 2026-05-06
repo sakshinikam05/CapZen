@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Logo } from '@/components/Logo';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -43,7 +44,7 @@ const Signup = () => {
   return (
     <div className="auth-root">
       <div className="auth-card">
-        <Link to="/" className="auth-card-logo">CapZen</Link>
+        <Logo className="justify-center mb-8" size="lg" />
 
         <h1 className="auth-form-title">Create your account</h1>
         <p className="auth-form-sub">Free to start. No credit card required.</p>

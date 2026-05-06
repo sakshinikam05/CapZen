@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Logo } from '@/components/Logo';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -32,7 +33,7 @@ const Login = () => {
   return (
     <div className="auth-root">
       <div className="auth-card">
-        <Link to="/" className="auth-card-logo">CapZen</Link>
+        <Logo className="justify-center mb-8" size="lg" />
 
         <h1 className="auth-form-title">Welcome back</h1>
         <p className="auth-form-sub">Sign in to your CapZen account</p>
