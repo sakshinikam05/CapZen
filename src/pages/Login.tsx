@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div className="auth-root">
       <div className="auth-card">
-        <Logo className="justify-center mb-8" size="lg" />
+        <Logo className="justify-center mb-8" size="xl" />
 
         <h1 className="auth-form-title">Welcome back</h1>
         <p className="auth-form-sub">Sign in to your CapZen account</p>

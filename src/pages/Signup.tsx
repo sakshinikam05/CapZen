@@ -44,7 +44,7 @@ const Signup = () => {
   return (
     <div className="auth-root">
       <div className="auth-card">
-        <Logo className="justify-center mb-8" size="lg" />
+        <Logo className="justify-center mb-8" size="xl" />
 
         <h1 className="auth-form-title">Create your account</h1>
         <p className="auth-form-sub">Free to start. No credit card required.</p>

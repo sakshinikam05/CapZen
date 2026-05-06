@@ -113,7 +113,7 @@ const Index = () => {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div className="flex items-center gap-3">
-              <Logo />
+              <Logo size="lg" />
               <div style={{ width: 1, height: 24, background: '#e2e8f0', margin: '0 4px' }} />
               <span style={{ fontSize: '0.8125rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Dashboard</span>
             </div>

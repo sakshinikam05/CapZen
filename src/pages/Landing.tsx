@@ -15,7 +15,7 @@ const Landing = () => {
       {/* ── NAV ── */}
       <header className="lp-nav">
         <div className="lp-nav-inner">
-          <Logo />
+          <Logo size="lg" />
           <nav className="lp-nav-links">
             <a href="#features" className="lp-nav-link">Features</a>
             <a href="#how-it-works" className="lp-nav-link">How it works</a>
@@ -41,7 +41,7 @@ const Landing = () => {
             perfectly managed.
           </h1>
           <p className="lp-hero-desc">
-            CapZen is a cap table management platform for Indian startups. Track shareholders, model funding rounds, manage ESOPs, and get AI-powered equity insights — all in INR.
+            CapZen is a cap table management platform for Indian startups. Track shareholders, model funding rounds, manage ESOPs, and get AI-powered equity insights all in INR.
           </p>
           <div className="lp-hero-actions">
             <Link to="/signup" className="lp-btn-primary">
@@ -226,7 +226,7 @@ const Landing = () => {
 
       {/* ── CTA ── */}
       <section className="lp-cta">
-        <Logo className="justify-center mb-6" size="lg" />
+        <Logo className="justify-center mb-8" size="xxl" />
         <h2 className="lp-cta-title">Start managing your cap table today</h2>
         <p className="lp-cta-sub">Free to start. No credit card required.</p>
         <Link to="/signup" className="lp-cta-btn">
@@ -237,7 +237,7 @@ const Landing = () => {
       {/* ── FOOTER ── */}
       <footer className="lp-footer">
         <div className="lp-footer-inner">
-          <Logo size="sm" />
+          <Logo size="md" />
           <p className="lp-footer-copy">© {new Date().getFullYear()} CapZen. Built for Indian founders.</p>
         </div>
       </footer>
