@@ -278,32 +278,20 @@ npm run build   # Output in dist/
 <table align="center">
   <tr>
     <td align="center">
-      <a href="https://github.com/sakshinikam05">
-        <img src="https://github.com/sakshinikam05.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Sakshi Nikam"/>
-        <br /><sub><b>Sakshi Nikam</b></sub>
-      </a>
-      <br /><sub>Full Stack · UI/UX</sub>
+      <img src="https://github.com/sakshinikam05.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Sakshi Nikam"/>
+      <br /><sub><b>Sakshi Nikam</b></sub>
     </td>
     <td align="center">
-      <a href="https://github.com/contributor2">
-        <img src="https://github.com/contributor2.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Contributor 2"/>
-        <br /><sub><b>Contributor 2</b></sub>
-      </a>
-      <br /><sub>Backend · API</sub>
+      <img src="https://github.com/snehaandhale.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Sneha Andhale"/>
+      <br /><sub><b>Sneha Andhale</b></sub>
     </td>
     <td align="center">
-      <a href="https://github.com/contributor3">
-        <img src="https://github.com/contributor3.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Contributor 3"/>
-        <br /><sub><b>Contributor 3</b></sub>
-      </a>
-      <br /><sub>Frontend · Design</sub>
+      <img src="https://github.com/shrushtipawar.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Shrushti Pawar"/>
+      <br /><sub><b>Shrushti Pawar</b></sub>
     </td>
     <td align="center">
-      <a href="https://github.com/contributor4">
-        <img src="https://github.com/contributor4.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Contributor 4"/>
-        <br /><sub><b>Contributor 4</b></sub>
-      </a>
-      <br /><sub>AI · Data Layer</sub>
+      <img src="https://github.com/vishakhapatil.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Vishakha Patil"/>
+      <br /><sub><b>Vishakha Patil</b></sub>
     </td>
   </tr>
 </table>
