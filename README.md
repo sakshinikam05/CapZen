@@ -282,15 +282,15 @@ npm run build   # Output in dist/
       <br /><sub><b>Sakshi Nikam</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/snehaandhale.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Sneha Andhale"/>
+      <img src="" width="70" height="70" style="border-radius:50%;" alt="Sneha Andhale"/>
       <br /><sub><b>Sneha Andhale</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/shrushtipawar.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Shrushti Pawar"/>
+      <img src="" width="70" height="70" style="border-radius:50%;" alt="Shrushti Pawar"/>
       <br /><sub><b>Shrushti Pawar</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/vishakhapatil.png?size=80" width="70" height="70" style="border-radius:50%;" alt="Vishakha Patil"/>
+      <img src="" width="70" height="70" style="border-radius:50%;" alt="Vishakha Patil"/>
       <br /><sub><b>Vishakha Patil</b></sub>
     </td>
   </tr>
