@@ -8,23 +8,32 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
   const sizeMap = {
-    sm: 'h-8',    // Header footer small
-    md: 'h-12',   // Standard dashboard
-    lg: 'h-16',   // Landing nav
-    xl: 'h-24',   // Auth cards
-    xxl: 'h-32',  // CTA sections
+    sm: 'text-lg',
+    md: 'text-xl',
+    lg: 'text-2xl',
+    xl: 'text-3xl',
+    xxl: 'text-5xl',
   };
 
-  const hSize = sizeMap[size];
+  const fontSize = sizeMap[size];
 
   return (
-    <Link to="/" className={`flex items-center no-underline ${className}`}>
-      <img 
-        src="/capzen-logo.png" 
-        alt="CapZen" 
-        className={`${hSize} w-auto object-contain transition-transform hover:scale-[1.02]`}
-        style={{ filter: 'contrast(1.1)' }} // Make it pop a bit more
-      />
+    <Link 
+      to="/" 
+      className={`inline-flex items-center no-underline select-none group ${className}`}
+      style={{ 
+        fontFamily: "'Inter', sans-serif",
+      }}
+    >
+      <span 
+        className={`${fontSize} font-semibold tracking-tight text-slate-900 transition-opacity hover:opacity-80`}
+        style={{ 
+          letterSpacing: '-0.01em',
+          lineHeight: 1
+        }}
+      >
+        CapZen
+      </span>
     </Link>
   );
 };
