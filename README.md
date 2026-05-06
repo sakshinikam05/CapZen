@@ -8,28 +8,28 @@
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeScript-5.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/SQLite-better--sqlite3-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
-  <img src="https://img.shields.io/badge/OpenAI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-18.3-ffffff?style=for-the-badge&logo=react&logoColor=000000" />
+  <img src="https://img.shields.io/badge/TypeScript-5.5-000000?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQLite-better--sqlite3-ffffff?style=for-the-badge&logo=sqlite&logoColor=000000" />
+  <img src="https://img.shields.io/badge/OpenAI-GPT--4-000000?style=for-the-badge&logo=openai&logoColor=white" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-  <img src="https://img.shields.io/badge/Express.js-4.x-000000?style=for-the-badge&logo=express&logoColor=white" />
-  <img src="https://img.shields.io/badge/Currency-INR_₹-FF9933?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Vite-5.4-ffffff?style=for-the-badge&logo=vite&logoColor=000000" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-000000?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-4.x-ffffff?style=for-the-badge&logo=express&logoColor=000000" />
+  <img src="https://img.shields.io/badge/Currency-INR_%E2%82%B9-000000?style=for-the-badge" />
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=20&pause=1000&color=0F172A&center=true&vCenter=true&width=600&lines=Real-time+Cap+Table+Management;AI-Powered+Equity+Advisor;ESOP+%26+Stock+Grant+Tracking;Dilution+Modeling+%26+Waterfall+Analysis;Secure+Per-User+SQLite+Persistence" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=20&pause=1000&color=FFFFFF&center=true&vCenter=true&width=600&lines=Real-time+Cap+Table+Management;AI-Powered+Equity+Advisor;ESOP+%26+Stock+Grant+Tracking;Dilution+Modeling+%26+Waterfall+Analysis;Secure+Per-User+SQLite+Persistence" alt="Typing SVG" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Cap_Tables-Fully_Managed-0F172A?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/ESOP-Automated_Vesting-64748B?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Auth-PBKDF2_SHA512-0F172A?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Export-XLSX_Ready-64748B?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Cap_Tables-Fully_Managed-000000?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/ESOP-Automated_Vesting-ffffff?style=for-the-badge&labelColor=000000&color=ffffff" />
+  <img src="https://img.shields.io/badge/Auth-PBKDF2_SHA512-000000?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Export-XLSX_Ready-ffffff?style=for-the-badge&labelColor=000000&color=ffffff" />
 </p>
 
 </div>
