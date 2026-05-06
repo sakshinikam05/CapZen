@@ -286,7 +286,7 @@ npm run build   # Output in dist/
       <br /><sub><b>Sneha Andhale</b></sub>
     </td>
     <td align="center">
-      <img src="" width="70" height="70" style="border-radius:50%;" alt="Shrushti Pawar"/>
+      <img src="https://github.com/shrushti-pawar2006" width="70" height="70" style="border-radius:50%;" alt="Shrushti Pawar"/>
       <br /><sub><b>Shrushti Pawar</b></sub>
     </td>
     <td align="center">
@@ -307,3 +307,4 @@ npm run build   # Output in dist/
 > © CapZen 2026 · MIT License · Industry Project
 
 </div>
+
