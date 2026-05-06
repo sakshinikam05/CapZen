@@ -304,6 +304,6 @@ npm run build   # Output in dist/
 
 > #### Built with 💻 & ☕ for India's startup ecosystem
 >
-> © CapZen 2025 · MIT License · Academic & Portfolio Project
+> © CapZen 2026 · MIT License · Industry Project
 
 </div>
