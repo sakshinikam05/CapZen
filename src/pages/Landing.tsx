@@ -5,9 +5,11 @@ import {
   TrendingUp, ArrowRight, Check
 } from 'lucide-react';
 import { Logo } from '@/components/Logo';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Landing = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className="lp-root">
@@ -22,8 +24,14 @@ const Landing = () => {
             <a href="#pricing" className="lp-nav-link">Pricing</a>
           </nav>
           <div className="lp-nav-actions">
-            <Link to="/login" className="lp-btn-ghost">Sign in</Link>
-            <Link to="/signup" className="lp-btn-cta">Get started</Link>
+            {isAuthenticated ? (
+              <Link to="/dashboard" className="lp-btn-cta">Dashboard</Link>
+            ) : (
+              <>
+                <Link to="/login" className="lp-btn-ghost">Sign in</Link>
+                <Link to="/signup" className="lp-btn-cta">Get started</Link>
+              </>
+            )}
           </div>
         </div>
       </header>
@@ -44,10 +52,18 @@ const Landing = () => {
             CapZen is a cap table management platform for Indian startups. Track shareholders, model funding rounds, manage ESOPs, and get AI-powered equity insights all in INR.
           </p>
           <div className="lp-hero-actions">
-            <Link to="/signup" className="lp-btn-primary">
-              Start for free <ArrowRight size={16} />
-            </Link>
-            <Link to="/login" className="lp-btn-secondary">Sign in</Link>
+            {isAuthenticated ? (
+              <Link to="/dashboard" className="lp-btn-primary">
+                Go to Dashboard <ArrowRight size={16} />
+              </Link>
+            ) : (
+              <>
+                <Link to="/signup" className="lp-btn-primary">
+                  Start for free <ArrowRight size={16} />
+                </Link>
+                <Link to="/login" className="lp-btn-secondary">Sign in</Link>
+              </>
+            )}
           </div>
         </div>
 
