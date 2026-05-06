@@ -180,6 +180,11 @@ OPENAI_API_KEY=sk-your-openai-api-key-here
 ---
 
 ## ▶️ Running the App
+## 📌 Notes
+
+- Make sure Node.js is installed before running the project.
+- Keep the `.env` file private.
+- Use `npm install` before starting the app.
 
 CapZen runs two processes in parallel:
 
