@@ -32,6 +32,7 @@ const Index = () => {
   const [convertibleInstruments, setConvertibleInstruments] = useState<ConvertibleInstrument[]>([]);
   const [stockGrants, setStockGrants] = useState<StockGrant[]>([]);
   const [waterfallScenarios, setWaterfallScenarios] = useState<WaterfallScenario[]>([]);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const { toast } = useToast();
   const { user, logout, saveCapData, loadCapData } = useAuth();
   const navigate = useNavigate();
@@ -39,24 +40,28 @@ const Index = () => {
   // Load user data on mount
   useEffect(() => {
     const fetchData = async () => {
-      const data = await loadCapData();
-      if (data.company) setCompany(data.company as Company);
-      if (data.shareholders) setShareholders(data.shareholders as Shareholder[]);
-      if (data.investmentRounds) setInvestmentRounds(data.investmentRounds as InvestmentRound[]);
-      if (data.convertibleInstruments) setConvertibleInstruments(data.convertibleInstruments as ConvertibleInstrument[]);
-      if (data.stockGrants) setStockGrants(data.stockGrants as StockGrant[]);
-      if (data.waterfallScenarios) setWaterfallScenarios(data.waterfallScenarios as WaterfallScenario[]);
+      try {
+        const data = await loadCapData();
+        if (data.company) setCompany(data.company as Company);
+        if (data.shareholders) setShareholders(data.shareholders as Shareholder[]);
+        if (data.investmentRounds) setInvestmentRounds(data.investmentRounds as InvestmentRound[]);
+        if (data.convertibleInstruments) setConvertibleInstruments(data.convertibleInstruments as ConvertibleInstrument[]);
+        if (data.stockGrants) setStockGrants(data.stockGrants as StockGrant[]);
+        if (data.waterfallScenarios) setWaterfallScenarios(data.waterfallScenarios as WaterfallScenario[]);
+      } finally {
+        setIsDataLoaded(true);
+      }
     };
     if (user) fetchData();
   }, [user]);
 
-  // Auto-save data whenever it changes
-  useEffect(() => { if (user) saveCapData('company', company); }, [company, user]);
-  useEffect(() => { if (user) saveCapData('shareholders', shareholders); }, [shareholders, user]);
-  useEffect(() => { if (user) saveCapData('investmentRounds', investmentRounds); }, [investmentRounds, user]);
-  useEffect(() => { if (user) saveCapData('convertibleInstruments', convertibleInstruments); }, [convertibleInstruments, user]);
-  useEffect(() => { if (user) saveCapData('stockGrants', stockGrants); }, [stockGrants, user]);
-  useEffect(() => { if (user) saveCapData('waterfallScenarios', waterfallScenarios); }, [waterfallScenarios, user]);
+  // Auto-save data whenever it changes (only after initial load)
+  useEffect(() => { if (user && isDataLoaded) saveCapData('company', company); }, [company, user, isDataLoaded]);
+  useEffect(() => { if (user && isDataLoaded) saveCapData('shareholders', shareholders); }, [shareholders, user, isDataLoaded]);
+  useEffect(() => { if (user && isDataLoaded) saveCapData('investmentRounds', investmentRounds); }, [investmentRounds, user, isDataLoaded]);
+  useEffect(() => { if (user && isDataLoaded) saveCapData('convertibleInstruments', convertibleInstruments); }, [convertibleInstruments, user, isDataLoaded]);
+  useEffect(() => { if (user && isDataLoaded) saveCapData('stockGrants', stockGrants); }, [stockGrants, user, isDataLoaded]);
+  useEffect(() => { if (user && isDataLoaded) saveCapData('waterfallScenarios', waterfallScenarios); }, [waterfallScenarios, user, isDataLoaded]);
 
   const handleLogout = () => {
     logout();
@@ -190,9 +195,9 @@ const Index = () => {
                 <TrendingUp className="h-5 w-5 text-purple-600" />
               </div>
               <div>
-                <p className="text-[11px] font-bold text-slate-500 mb-0.5">Total Shares</p>
+                <p className="text-[11px] font-bold text-slate-500 mb-0.5 uppercase tracking-widest">Total Shares</p>
                 <p className="text-xl font-black text-slate-900 leading-none">
-                  {shareholders.reduce((sum, s) => sum + s.shares, 0).toLocaleString('en-IN')}
+                  {totalShares.toLocaleString('en-IN')}
                 </p>
               </div>
             </CardContent>
